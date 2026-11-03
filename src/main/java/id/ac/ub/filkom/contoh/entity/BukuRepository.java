@@ -1,4 +1,5 @@
-package id.ac.ub.filkom.contoh.repository;
+package id.ac.ub.filkom.contoh.entity;
+
 
 import id.ac.ub.filkom.contoh.entity.Buku;
 import org.springframework.data.jpa.repository.JpaRepository;

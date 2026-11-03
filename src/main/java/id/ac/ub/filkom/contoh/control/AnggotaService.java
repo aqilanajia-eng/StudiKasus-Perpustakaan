@@ -1,12 +1,12 @@
-package id.ac.ub.filkom.contoh.service;
+package id.ac.ub.filkom.contoh.control;
 
 import id.ac.ub.filkom.contoh.entity.Anggota;
-import id.ac.ub.filkom.contoh.repository.AnggotaRepository;
+import id.ac.ub.filkom.contoh.entity.AnggotaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/** Service: logika untuk fitur anggota. */
+/** Control: mengatur logika untuk fitur anggota. */
 @Service
 public class AnggotaService {
 
@@ -18,5 +18,11 @@ public class AnggotaService {
 
     public List<Anggota> lihatSemuaAnggota() {
         return anggotaRepository.findAll();
+    }
+
+    // Menambahkan anggota baru
+    public void tambahAnggota(String idAnggota, String nama, int batasPinjam) {
+        Anggota anggota = new Anggota(idAnggota, nama, batasPinjam);
+        anggotaRepository.save(anggota);
     }
 }

@@ -1,3 +1,4 @@
+
 package id.ac.ub.filkom.contoh.entity;
 
 import jakarta.persistence.Column;
@@ -31,4 +32,17 @@ public class Buku {
     public String getIdBuku() { return idBuku; }
     public String getJudul()  { return judul; }
     public int getStok()      { return stok; }
+
+    // Mengecek apakah stok buku masih tersedia
+    public boolean cekStok() {
+        return stok > 0;
+    }
+
+    // Mengurangi stok buku ketika berhasil dipinjam
+    public void kurangiStok() {
+        if (stok <= 0) {
+            throw new IllegalStateException("Stok buku habis");
+        }
+        stok--;
+    }
 }

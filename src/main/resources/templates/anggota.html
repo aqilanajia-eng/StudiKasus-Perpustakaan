@@ -7,6 +7,27 @@
 <body>
 <h1>Daftar Anggota</h1>
 
+<h2>Tambah Anggota</h2>
+<form th:action="@{/anggota}" method="post">
+    <label for="idAnggota">ID Anggota:</label>
+    <input type="text" id="idAnggota" name="idAnggota" maxlength="10" required>
+    <br><br>
+
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" name="nama" maxlength="100" required>
+    <br><br>
+
+    <label for="batasPinjam">Batas Pinjam:</label>
+    <input type="number" id="batasPinjam" name="batasPinjam" min="0" required>
+    <br><br>
+
+    <button type="submit">Tambah Anggota</button>
+</form>
+
+<hr>
+
+<h2>Daftar Anggota</h2>
+
 <p th:if="${#lists.isEmpty(daftarAnggota)}">Belum ada anggota.</p>
 
 <table border="1" th:unless="${#lists.isEmpty(daftarAnggota)}">

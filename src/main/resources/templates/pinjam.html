@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Peminjaman Buku</title>
+</head>
+<body>
+
+<h1>Peminjaman Buku</h1>
+
+<p th:if="${pesan != null}" th:text="${pesan}"></p>
+
+<!-- Opsi reservasi jika stok buku habis -->
+<div th:if="${bisaReservasi}">
+
+    <p>
+        Buku yang dipilih sedang tidak tersedia.
+        Kamu dapat melakukan reservasi untuk buku tersebut.
+    </p>
+
+    <form th:action="@{/reservasi}" method="post">
+
+        <input type="hidden"
+               name="idAnggota"
+               th:value="${idAnggotaReservasi}">
+
+        <input type="hidden"
+               name="idBuku"
+               th:value="${idBukuReservasi}">
+
+        <button type="submit">Reservasi Buku</button>
+
+    </form>
+
+</div>
+
+<h2>Form Peminjaman</h2>
+
+<form th:action="@{/pinjam}" method="post">
+
+    <label for="idAnggota">Pilih Anggota:</label>
+    <select id="idAnggota" name="idAnggota" required>
+        <option value="">-- Pilih Anggota --</option>
+        <option th:each="a : ${daftarAnggota}"
+                th:value="${a.idAnggota}"
+                th:text="${a.nama}">
+        </option>
+    </select>
+
+    <br><br>
+
+    <label for="idBuku">Pilih Buku:</label>
+    <select id="idBuku" name="idBuku" required>
+        <option value="">-- Pilih Buku --</option>
+        <option th:each="b : ${daftarBuku}"
+                th:value="${b.idBuku}"
+                th:text="${b.judul + ' (Stok: ' + b.stok + ')'}">
+        </option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Pinjam Buku</button>
+
+</form>
+
+<hr>
+
+<h2>Daftar Buku</h2>
+
+<table border="1">
+    <tr>
+        <th>ID Buku</th>
+        <th>Judul</th>
+        <th>Stok</th>
+    </tr>
+
+    <tr th:each="b : ${daftarBuku}">
+        <td th:text="${b.idBuku}"></td>
+        <td th:text="${b.judul}"></td>
+        <td th:text="${b.stok}"></td>
+    </tr>
+</table>
+
+<br>
+
+<a th:href="@{/buku}">Kembali ke Daftar Buku</a>
+
+</body>
+</html>

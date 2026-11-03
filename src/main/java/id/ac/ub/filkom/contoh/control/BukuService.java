@@ -1,12 +1,12 @@
-package id.ac.ub.filkom.contoh.service;
+package id.ac.ub.filkom.contoh.control;
 
 import id.ac.ub.filkom.contoh.entity.Buku;
-import id.ac.ub.filkom.contoh.repository.BukuRepository;
+import id.ac.ub.filkom.contoh.entity.BukuRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/** Service: tempat logika bisnis/aturan aplikasi. */
+/** Control: mengatur logika bisnis dan aturan aplikasi buku. */
 @Service
 public class BukuService {
 
